@@ -5,7 +5,6 @@ use Ibd\Ksiazki;
 
 $ksiazki = new Ksiazki();
 $lista = $ksiazki->pobierzWszystkie();
-
 ?>
 
 <h1>Książki</h1>

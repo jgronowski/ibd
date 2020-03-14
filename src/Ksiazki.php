@@ -12,8 +12,8 @@ class Ksiazki
 	private $db;
 
 	public function __construct()
-	{
-		$this->db = new Db();
+    {
+        $this->db = new Db();
 	}
 
 	/**
@@ -23,7 +23,7 @@ class Ksiazki
 	 */
 	public function pobierzWszystkie()
 	{
-		$sql = "SELECT k.* FROM ksiazki k";
+		$sql = "SELECT k.* FROM ksiazki k  ";
 
 		return $this->db->pobierzWszystko($sql);
 	}

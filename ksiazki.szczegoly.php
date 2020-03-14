@@ -13,7 +13,7 @@ include 'header.php';
 use Ibd\Ksiazki;
 
 $ksiazki = new Ksiazki();
-$dane = $ksiazki->pobierz($id)
+$dane = $ksiazki->pobierz($id);
 ?>
 
 <h2><?=$dane['tytul']?></h2>
