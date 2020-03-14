@@ -35,13 +35,13 @@ $dane = $ksiazki->pobierz($id);
                 <p class="card-text mb-auto"><?=$dane['opis']?></p>
             </div>
             <?php if(!empty($dane['zdjecie'])): ?>
-                <img class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" src="zdjecia/<?=$dane['zdjecie']?>" alt="<?=$dane['tytul']?>" />
+                <img class="card-img-right flex-auto d-none d-md-block" style="width: 300px; height: 450px;" src="zdjecia/<?=$dane['zdjecie']?>" alt="<?=$dane['tytul']?>" />
             <?php else: ?>
-                <img class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" src="zdjecia/noimage.jpg" alt="Brak Obrazka" />
+                <img class="card-img-right flex-auto d-none d-md-block" style="width: 300px; height: 450px;" src="zdjecia/noimage.jpg" alt="Brak Obrazka" />
             <?php endif; ?>
            </div>
     </div>
 
-   
+
 
 <?php include 'footer.php'; ?>
