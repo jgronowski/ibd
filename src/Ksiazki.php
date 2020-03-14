@@ -45,7 +45,7 @@ class Ksiazki
 	 */
 	public function pobierzBestsellery()
     {
-        $sql = "SELECT * FROM ksiazki k, autorzy a WHERE k.id_autora=a.id ORDER BY RAND() LIMIT 5";
+        $sql = "SELECT k.id, k.tytul, a.imie, a.nazwisko, k.opis, k.isbn, k.cena, k.liczba_stron, k.zdjecie FROM ksiazki k, autorzy a JOIN autorzy WHERE k.id_autora=a.id ORDER BY RAND() LIMIT 5";
 
         return $this->db->pobierzWszystko($sql);
         // uzupełnić funkcję
