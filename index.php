@@ -1,4 +1,11 @@
-<?php include 'header.php'; ?>
+<?php
+include 'header.php';
+
+use Ibd\Ksiazki;
+
+$ksiazki = new Ksiazki();
+$lista = $ksiazki->pobierzWszystkie();
+?>
 
 <h1>Witamy w księgarni internetowej11</h1>
 

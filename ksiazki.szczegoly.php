@@ -24,4 +24,16 @@ $dane = $ksiazki->pobierz($id);
 
 <p>szczegóły książki......</p>
 
+    <table class="table">
+        <tr><?php if(!empty($dane['zdjecie'])): ?>
+                <img src="zdjecia/<?=$dane['zdjecie']?>" alt="<?=$dane['tytul']?>" />
+            <?php else: ?>
+                <img src="zdjecia/noimage.jpg" alt="Brak Obrazka" />
+            <?php endif; ?></tr>
+        <tr><td>Opis:</td><td><?=$dane['opis']?></td></tr>
+        <tr><td>Cena:</td><td><?=$dane['cena']?></td></tr>
+        <tr><td>ISBN:</td><td><?=$dane['isbn']?><</td></tr>
+        <tr><td>Liczba Stron:</td><td><?=$dane['liczba_stron']?></td></tr>
+    </table>
+
 <?php include 'footer.php'; ?>

@@ -23,14 +23,14 @@ class Ksiazki
 	 */
 	public function pobierzWszystkie()
 	{
-		$sql = "SELECT k.*, a.*, k2.* FROM ksiazki k JOIN autorzy as a ON k.id_autora = a.id JOIN kategorie k2 on k.id_kategorii = k2.id; ";
+		$sql = "SELECT k.*, a.imie, a.nazwisko, k2.nazwa FROM ksiazki k JOIN autorzy as a ON k.id_autora = a.id JOIN kategorie k2 on k.id_kategorii = k2.id; ";
 
 		return $this->db->pobierzWszystko($sql);
 	}
 
 	/**
 	 * Pobiera dane książki o podanym id.
-	 * 
+	 *
 	 * @param int $id
 	 * @return array
 	 */
@@ -41,13 +41,14 @@ class Ksiazki
 
 	/**
 	 * Pobiera najlepiej sprzedające się książki.
-	 * 
+	 *
 	 */
 	public function pobierzBestsellery()
-	{
-		$sql = "SELECT * FROM ksiazki ORDER BY RAND() LIMIT 5";
+    {
+        $sql = "SELECT * FROM ksiazki k, autorzy a WHERE k.id_autora=a.id ORDER BY RAND() LIMIT 5";
 
-		// uzupełnić funkcję
-	}
+        return $this->db->pobierzWszystko($sql);
+        // uzupełnić funkcję
+    }
 
 }
