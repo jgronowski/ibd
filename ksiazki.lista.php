@@ -27,7 +27,7 @@ $lista = $ksiazki->pobierzWszystkie();
 					<?php if (!empty($ks['zdjecie'])) : ?>
 						<img src="zdjecia/<?= $ks['zdjecie'] ?>" alt="<?= $ks['tytul'] ?>" class="img-thumbnail" />
 					<?php else : ?>
-						brak zdjęcia
+						<img src="zdjecia/noimage.jpg" alt="Brak Obrazka" class="img-thumbnail" />
 					<?php endif; ?>
 				</td>
 				<td><?= $ks['tytul'] ?></td>
