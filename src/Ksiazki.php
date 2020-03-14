@@ -23,7 +23,7 @@ class Ksiazki
 	 */
 	public function pobierzWszystkie()
 	{
-		$sql = "SELECT k.* FROM ksiazki k  ";
+		$sql = "SELECT k.*, a.*, k2.* FROM ksiazki k JOIN autorzy as a ON k.id_autora = a.id JOIN kategorie k2 on k.id_kategorii = k2.id; ";
 
 		return $this->db->pobierzWszystko($sql);
 	}

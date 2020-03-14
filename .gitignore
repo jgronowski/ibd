@@ -1,1 +1,4 @@
 vendor/
+.idea/
+zdjecia/.DS_Store
+composer.lock
