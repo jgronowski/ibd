@@ -22,18 +22,26 @@ $dane = $ksiazki->pobierz($id);
 	<a href="ksiazki.lista.php"><i class="fas fa-chevron-left"></i> Powrót</a>
 </p>
 
-<p>szczegóły książki......</p>
-
-    <table class="table">
-        <tr><?php if(!empty($dane['zdjecie'])): ?>
-                <img src="zdjecia/<?=$dane['zdjecie']?>" alt="<?=$dane['tytul']?>" />
+    <div>
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary"><?=$dane['tytul']?></strong>
+                <div class="mb-1 text-muted">ISBN: <?=$dane['isbn']?></div>
+                <h6 class="mb-0">
+                    Cena: <?=$dane['cena']?> PLN</br>
+                    Liczba Stron: <?=$dane['liczba_stron']?>
+                </h6>
+                <p></p>
+                <p class="card-text mb-auto"><?=$dane['opis']?></p>
+            </div>
+            <?php if(!empty($dane['zdjecie'])): ?>
+                <img class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" src="zdjecia/<?=$dane['zdjecie']?>" alt="<?=$dane['tytul']?>" />
             <?php else: ?>
-                <img src="zdjecia/noimage.jpg" alt="Brak Obrazka" />
-            <?php endif; ?></tr>
-        <tr><td>Opis:</td><td><?=$dane['opis']?></td></tr>
-        <tr><td>Cena:</td><td><?=$dane['cena']?></td></tr>
-        <tr><td>ISBN:</td><td><?=$dane['isbn']?><</td></tr>
-        <tr><td>Liczba Stron:</td><td><?=$dane['liczba_stron']?></td></tr>
-    </table>
+                <img class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" src="zdjecia/noimage.jpg" alt="Brak Obrazka" />
+            <?php endif; ?>
+           </div>
+    </div>
+
+   
 
 <?php include 'footer.php'; ?>
