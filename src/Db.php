@@ -12,7 +12,7 @@ class Db
 	 * Dane dostępowe do bazy.
 	 */
 	private $dbLogin = 'root';
-	private $dbPassword = '';
+	private $dbPassword = 'fckgwrhqq2';
 	private $dbHost = 'localhost';
 	private $dbName = 'ibd';
 
@@ -34,7 +34,7 @@ class Db
 	 * @param array $params Tablica z parametrami zapytania
 	 * @return array|bool Tablica z danymi, false jeśl nie udało się wysłać zapytania
 	 */
-	public function pobierzWszystko(string $sql, ?array $params = null)
+	public function pobierzWszystko(string $sql, array $params = null)
 	{
 		$stmt = $this->pdo->prepare($sql);
 
