@@ -1,14 +1,14 @@
 <?php
-require_once 'src/Ksiazki.php';
-require_once 'src/Db.php';
-
-$ostat = $ksiazki->pobierzBestsellery();
+use Ibd\Ksiazki;
+// pobieranie książek
+$ksiazki = new Ksiazki();
+$lista = $ksiazki->pobierzBestsellery();
 
 ?>
 
 <div class="col-md-2">
 	<h1>Bestsellery</h1>
-    <?php foreach($ostat as $ks): ?>
+    <?php foreach($lista as $ks): ?>
     <div class="card flex-md-row mb-4 box-shadow h-md-250">
         <div class="card-body d-flex flex-column align-items-start">
             <h6 class="d-inline-block mb-2 text-primary"><?=$ks['tytul']?></h6>
