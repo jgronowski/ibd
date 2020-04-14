@@ -108,7 +108,7 @@ class Stronicowanie
      * @param string $select Zapytanie SELECT
      * @return string
      */
-    public function pobierzInfoOLiczbieRekordow(string $select): string
+    public function pobierzInfoOLiczbieRekordow(string $select, string $strona): string
     {
         $rekordow = $this->db->policzRekordy($select, $this->parametryZapytania);
         if($rekordow == 0) {
