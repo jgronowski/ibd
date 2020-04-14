@@ -33,8 +33,7 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
             <?php foreach ($listaKategorii as $kat): ?>
                 <option value="<?= $kat['id'] ?>"
                     <?= ($_GET['id_kategorii'] ?? '') == $kat['id'] ? 'selected' : '' ?>
-                <?= $kat['nazwa'] ?>
-		</option>
+                ><?= $kat['nazwa'] ?></option>
             <?php endforeach; ?>
         </select>
 
@@ -55,6 +54,14 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
             <option value="k.cena DESC"
                 <?= ($_GET['sortowanie'] ?? '') == 'k.cena DESC' ? 'selected' : '' ?>
             >cenie malejąco
+            </option>
+            <option value="a.nazwisko ASC"
+                <?= ($_GET['sortowanie'] ?? '') == 'a.nazwisko ASC' ? 'selected' : '' ?>
+            >nazwisko rosnąco
+            </option>
+            <option value="a.nazwisko DESC"
+                <?= ($_GET['sortowanie'] ?? '') == 'a.nazwisko DESC' ? 'selected' : '' ?>
+            >nazwisko malejąco
             </option>
         </select>
 
@@ -83,8 +90,8 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
                     <?php endif; ?>
                 </td>
                 <td><?= $ks['tytul'] ?></td>
-		<td><?= $ks['imie'] ?> <?= $ks['nazwisko'] ?></td>
-		<td><?= $ks['nazwa'] ?></td>
+		<td><?= $ks['imie_autora'] ?> <?= $ks['nazwisko_autora'] ?></td>
+		<td><?= $ks['nazwa_kategorii'] ?></td>
 		<td><?= $ks['cena'] ?></td>
 		<td>
                     <a href="koszyk.dodaj.php" data-id="<?=$ks['id'] ?>" class="aDodajDoKoszyka" title="dodaj do koszyka"><i class="fas fa-cart-plus"></i></a>

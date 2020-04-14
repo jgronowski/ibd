@@ -34,10 +34,11 @@ class Ksiazki
      * @param $params
      * @return array
      */
+    
     public function pobierzZapytanie($params)
     {
         $parametry = [];
-        $sql = "SELECT k.*, a.imie as imie, a.nazwisko as nazwisko, kat.nazwa as nazwa FROM ksiazki k 
+        $sql = "SELECT k.*, a.imie as imie_autora, a.nazwisko as nazwisko_autora, kat.nazwa as nazwa_kategorii FROM ksiazki k 
         JOIN autorzy a ON k.id_autora = a.id
         JOIN kategorie kat on k.id_kategorii = kat.id";
 
@@ -47,13 +48,13 @@ class Ksiazki
             $parametry['fraza'] = "%$params[fraza]%";
         }
         if (!empty($params['id_kategorii'])) {
-            $sql .= "AND k.id_kategorii = :id_kategorii ";
+            $sql .= " AND k.id_kategorii = :id_kategorii ";
             $parametry['id_kategorii'] = $params['id_kategorii'];
         }
 
         // dodawanie sortowania
         if (!empty($params['sortowanie'])) {
-            $kolumny = ['k.tytul', 'k.cena'];
+            $kolumny = ['k.tytul', 'k.cena', 'a.nazwisko'];
             $kierunki = ['ASC', 'DESC'];
             [$kolumna, $kierunek] == explode(' ', $params['sortowanie']);
 
@@ -61,7 +62,6 @@ class Ksiazki
                 $sql .= " ORDER BY " . $params['sortowanie'];
             }
         }
-
         return ['sql' => $sql, 'parametry' => $parametry];
     }
 
