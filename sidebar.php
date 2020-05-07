@@ -1,32 +1,42 @@
-<?php
-use Ibd\Ksiazki;
-// pobieranie książek
-$ksiazki = new Ksiazki();
-$lista = $ksiazki->pobierzBestsellery();
+<div class="col-md-3">
+    <?php if (empty($_SESSION['id_uzytkownika'])): ?>
+        <h1>Logowanie</h1>
 
-?>
+        <form method="post" action="logowanie.php">
+            <div class="form-group">
+                <label for="login">Login:</label>
+                <input type="text" id="login" name="login" class="form-control input-sm" />
+            </div>
+            <div class="form-group">
+                <label for="haslo">Hasło:</label>
+                <input type="password" id="haslo" name="haslo" class="form-control input-sm" />
+            </div>
+            <div class="form-group">
+                <button type="submit" name="zaloguj" id="submit" class="btn btn-primary btn-sm">Zaloguj się</button>
+                <a href="rejestracja.php" class="btn btn-link btn-sm">Zarejestruj się</a>
+                <input type="hidden" name="powrot" value="<?= basename($_SERVER['SCRIPT_NAME']) ?>" />
+            </div>
+        </form>
+    <?php else: ?>
+        <p class="text-right">
+            Zalogowany: <strong><?= $_SESSION['login'] ?></strong>
+            &nbsp;
+            <a href="wyloguj.php" class="btn btn-secondary btn-sm">wyloguj się</a>
+        </p>
+    <?php endif; ?>
 
-<div class="col-md-2">
-	<h1>Bestsellery</h1>
-    <?php foreach($lista as $ks): ?>
-    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-            <h6 class="d-inline-block mb-2 text-primary"><?=$ks['tytul']?></h6>
-            <strong class="mb-1">
-                <a href="ksiazki.szczegoly.php?id=<?=$ks['id']?>">
+    <h1>Koszyk</h1>
+    <p>
+        Suma wartości książek w koszyku:
+        <strong>0</strong> PLN
+    </p>
 
-                    <?=$ks['imie']?> <cite title="Source Title"><?=$ks['nazwisko']?>
-                </a>
-            </strong>
-            <div class="mb-1 text-muted"> <?=$ks['cena']?> PLN</div>
-            <?php if(!empty($ks['zdjecie'])): ?>
-                <a href="ksiazki.szczegoly.php?id=<?=$ks['id']?>"><img src="zdjecia/<?=$ks['zdjecie']?>" alt="<?=$ks['tytul']?>" class="img-thumbnail" /></a>
-            <?php else: ?>
-                <a href="ksiazki.szczegoly.php?id=<?=$ks['id']?>"><img src="zdjecia/noimage.jpg" alt="<?=$ks['tytul']?>" class="img-thumbnail" /></a>
-            <?php endif; ?>
-        </div>
-
-    </div>
-    <?php endforeach; ?>
-
+    <h1>Bestsellery</h1>
+    <ul>
+        <li>Książka 1</li>
+        <li>Książka 2</li>
+        <li>Książka 3</li>
+        <li>Książka 4</li>
+        <li>Książka 5</li>
+    </ul>
 </div>
