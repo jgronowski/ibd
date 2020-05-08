@@ -21,14 +21,9 @@ class Koszyk
 	 *
 	 * @return array
 	 */
-	public function pobierzWszystkie($idSesji)
+	public function pobierzWszystkie()
 	{
-		$sql = "
-			SELECT ks.*, ko.liczba_sztuk, ko.id AS id_koszyka
-			FROM ksiazki ks JOIN koszyk ko ON ks.id = ko.id_ksiazki
-			WHERE ko.id_sesji = '$idSesji'
-			ORDER BY ko.data_dodania DESC";
-
+        $sql = "SELECT k.*, a.*, k2.* FROM ksiazki k JOIN autorzy as a ON k.id_autora = a.id JOIN kategorie k2 on k.id_kategorii = k2.id; ";
 		return $this->db->pobierzWszystko($sql);
 	}
 
@@ -63,6 +58,27 @@ class Koszyk
 		
 		return $ile > 0;
 	}
+
+	/**
+	 * Zwieksz ilosc ksiazki w koszyku o jeden.
+	 *
+	 * @param int $idKsiazki
+	 * @param string $idSesji
+	 * @return bool
+	 */
+	public function zwiekszIloscKsiazek($idKsiazki, $idSesji)
+	{
+		$sql = "SELECT * FROM koszyk WHERE id_sesji = '$idSesji' AND id_ksiazki = :id_ksiazki";
+		$wynik = $this->db->pobierzWszystko($sql, [':id_ksiazki' => $idKsiazki]);
+		foreach($wynik as $koszyk) {
+			$this->zmienLiczbeSztuk([
+				$koszyk['id'] => $koszyk['liczba_sztuk']+1
+			]);
+			return true;
+		}
+		return false;
+	}
+
 
 	/**
 	 * Zmienia (usuwa) ilości sztuk książek w koszyku.
