@@ -9,7 +9,13 @@ require_once 'vendor/autoload.php';
 use Ibd\Autorzy;
 
 if(isset($_POST)) {
-	$autorzy = new Autorzy();
-	if($autorzy->usun($_GET['id']))
-		echo 'ok';
+    $autorzy = new Autorzy();
+    if(!($autorzy->czyMaKsiazki($_GET['id']))){
+        if($autorzy->usun($_GET['id']))
+            echo 'ok';
+    }
+    else {
+        echo 'Nie można usunąć, autor posiada powiązane ksiązki';
+    }
+
 }
